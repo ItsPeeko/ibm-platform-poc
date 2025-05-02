@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IBM PoC Frontend</title>
+</head>
+<body>
+  <h1>Rolling Update Demo</h1>
+  <button onclick="getVersion()">Get Backend Version</button>
+  <button onclick="loadData()">Simulate Load</button>
+  <pre id="output"></pre>
+
+  <script>
+    async function getVersion() {
+      const res = await fetch('/api/version');
+      const data = await res.json();
+      document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+    }
+
+    async function loadData() {
+      const results = [];
+      for (let i = 0; i < 10; i++) {
+        const res = await fetch('/api/data');
+        results.push(await res.json());
+      }
+      document.getElementById('output').textContent = JSON.stringify(results, null, 2);
+    }
+  </script>
+</body>
+</html>
+
