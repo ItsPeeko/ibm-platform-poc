@@ -33,8 +33,9 @@ The PoC walks through upgrading the backend from version `v1` to `v2` while cont
 - uncomment backend-v2 code in yml file
 - uncomment backend-v2 service code in nginx.conf file
 
-# 5. Test availability during upgrade
+# 5. Test availability during upgrade and health of containers
 - click simulate load / get version
+- docker ps
 - run docker-compose up -d --build
 - run docker-compose restart proxy
 
